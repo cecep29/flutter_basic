@@ -4,30 +4,39 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int number = 0;
+  void tekanTombol() {
+    setState(() {
+      number = number + 1;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Latihan Container'),
+          title: const Text('Stateful Widget'),
         ),
-        body: Container(
-          margin: const EdgeInsets.all(10),
-          color: Colors.red,
-          padding: const EdgeInsets.only(top: 20),
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[Colors.amber, Colors.blue],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                number.toString(),
+                style: TextStyle(fontSize: 10 + number.toDouble()),
               ),
-            ),
+              ElevatedButton(
+                  onPressed: tekanTombol, child: const Text('Tambah bilangan'))
+            ],
           ),
         ),
       ),
