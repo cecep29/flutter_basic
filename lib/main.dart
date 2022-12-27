@@ -4,36 +4,27 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  String name = "ini adalah text";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Anonymous function'),
+          title: const Text('Text Style'),
         ),
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(name),
-            ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    name = 'ini teks yang diganti';
-                  });
-                },
-                child: const Text('ganti teks'))
-          ],
-        )),
+        body: const Center(
+          child: Text(
+            'Belajar TextStyle',
+            style: TextStyle(
+                fontSize: 30,
+                fontFamily: 'CrashLanding',
+                decoration: TextDecoration.overline,
+                decorationColor: Colors.red,
+                decorationThickness: 5),
+          ),
+        ),
       ),
     );
   }
