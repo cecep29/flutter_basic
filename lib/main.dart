@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,53 +14,31 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Widget> myList = [const Text('Test')];
-
-  int number = 1;
-
+  Random random = Random();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('List View'),
+          title: const Text('Animated Container'),
         ),
-        body: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  child: const Text('Add List'),
-                  onPressed: () {
-                    setState(() {
-                      myList.add(
-                        Text(' List ke: $number'),
-                      );
-                      number++;
-                    });
-                  },
-                ),
-                ElevatedButton(
-                  child: const Text('Remove List'),
-                  onPressed: () {
-                    setState(() {
-                      myList.removeLast();
-                      number = number - 1;
-                    });
-                  },
-                )
-              ],
-            ),
-            Expanded(
-              child: ListView(
-                children: myList.toList(),
+        body: Center(
+          child: GestureDetector(
+            onTap: () {
+              setState(() {});
+            },
+            child: AnimatedContainer(
+              color: Color.fromARGB(
+                255,
+                random.nextInt(256),
+                random.nextInt(256),
+                random.nextInt(256),
               ),
-            )
-          ],
+              duration: const Duration(seconds: 1),
+              width: 50.0 + random.nextInt(101),
+              height: 50.0 + random.nextInt(101),
+            ),
+          ),
         ),
       ),
     );
