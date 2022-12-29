@@ -6,39 +6,59 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  Random random = Random();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Animated Container'),
+          title: const Text('Flexible'),
         ),
-        body: Center(
-          child: GestureDetector(
-            onTap: () {
-              setState(() {});
-            },
-            child: AnimatedContainer(
-              color: Color.fromARGB(
-                255,
-                random.nextInt(256),
-                random.nextInt(256),
-                random.nextInt(256),
+        body: Column(
+          children: [
+            Flexible(
+              flex: 1,
+              child: Row(
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      color: Colors.red,
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      color: Colors.blue,
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      margin: const EdgeInsets.all(5),
+                      color: Colors.purple,
+                    ),
+                  )
+                ],
               ),
-              duration: const Duration(seconds: 1),
-              width: 50.0 + random.nextInt(101),
-              height: 50.0 + random.nextInt(101),
             ),
-          ),
+            Flexible(
+                flex: 2,
+                child: Container(
+                  margin: const EdgeInsets.all(5),
+                  color: Colors.amberAccent,
+                )),
+            Flexible(
+                flex: 1,
+                child: Container(
+                  margin: const EdgeInsets.all(5),
+                  color: Colors.blue,
+                ))
+          ],
         ),
       ),
     );
