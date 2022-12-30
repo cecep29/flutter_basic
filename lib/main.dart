@@ -12,21 +12,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Image'),
-        ),
-        body: Center(
-          child: Container(
-            width: 200,
-            height: 200,
-            //   child: Image.network(
-            //       'https://cdn-asset.jawapos.com/wp-content/uploads/2019/01/resmi-berkencan-kini-jennie-blackpink-miliki-2-kai-kesayangan_m_-750x500.jpg'),
-            // ),
-            child: Image.asset('images/jenni.webp'),
-          ),
-        ),
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Text('Spacer'),
       ),
-    );
+      body: Row(
+        children: [
+          const Spacer(),
+          Container(
+            width: 80,
+            height: 80,
+            color: Colors.red,
+          ),
+          const Spacer(),
+          Container(
+            width: 80,
+            height: 80,
+            color: Colors.green,
+          ),
+          const Spacer(),
+          Container(
+            width: 80,
+            height: 80,
+            color: Colors.blue,
+          ),
+          const Spacer(),
+        ],
+      ),
+    ));
   }
 }
