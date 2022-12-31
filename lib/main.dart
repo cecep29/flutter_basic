@@ -28,7 +28,10 @@ class MyApp extends StatelessWidget {
     return Card(
       child: Container(
         padding: const EdgeInsets.all(10),
-        child: Row(children: [Icon(icon), Text(text)]),
+        child: Row(children: [
+          Container(margin: const EdgeInsets.only(right: 5), child: Icon(icon)),
+          Text(text)
+        ]),
       ),
     );
   }
