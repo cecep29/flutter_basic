@@ -10,46 +10,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        leading: const Icon(
-          Icons.adb,
-          color: Colors.black,
-        ),
-        title: const Text(
-          'AppBar Example',
-          style: TextStyle(color: Colors.black),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.settings,
-              color: Colors.black,
+      home: Scaffold(
+          backgroundColor: Colors.green,
+          body: Container(
+            margin: const EdgeInsets.all(10),
+            child: ListView(
+              children: [
+                buildCard(Icons.adb, "Acount Box"),
+                buildCard(Icons.abc, "ABC Box")
+              ],
             ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.exit_to_app,
-              color: Colors.black,
-            ),
-          )
-        ],
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.blue, Colors.blueGrey],
-                begin: FractionalOffset.topLeft,
-                end: FractionalOffset.bottomRight),
-            image: DecorationImage(
-                image: AssetImage('images/transparent_pattern.jpg'),
-                fit: BoxFit.none,
-                repeat: ImageRepeat.repeat),
-          ),
-        ),
+          )),
+    );
+  }
+
+  Card buildCard(IconData icon, String text) {
+    return Card(
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        child: Row(children: [Icon(icon), Text(text)]),
       ),
-      body: Center(child: Image.asset('images/jenni.webp')),
-    ));
+    );
   }
 }
