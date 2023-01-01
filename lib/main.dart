@@ -4,34 +4,37 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          backgroundColor: Colors.green,
-          body: Container(
-            margin: const EdgeInsets.all(10),
-            child: ListView(
-              children: [
-                buildCard(Icons.adb, "Acount Box"),
-                buildCard(Icons.abc, "ABC Box")
-              ],
+        appBar: AppBar(
+          title: const Text('Latihan Text Field'),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              margin: const EdgeInsets.all(20),
+              child: TextField(
+                  controller: controller,
+                  onChanged: (value) {
+                    setState(() {});
+                  }),
             ),
-          )),
-    );
-  }
-
-  Card buildCard(IconData icon, String text) {
-    return Card(
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        child: Row(children: [
-          Container(margin: const EdgeInsets.only(right: 5), child: Icon(icon)),
-          Text(text)
-        ]),
+            Text(controller.text)
+          ],
+        ),
       ),
     );
   }
