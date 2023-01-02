@@ -4,36 +4,28 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Latihan Text Field'),
+          title: const Text('Text Decoration'),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Container(
-              margin: const EdgeInsets.all(20),
-              child: TextField(
-                  controller: controller,
-                  onChanged: (value) {
-                    setState(() {});
-                  }),
-            ),
-            Text(controller.text)
-          ],
+        body: Container(
+          margin: const EdgeInsets.all(10),
+          child: TextField(
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: const BorderSide(width: 3, color: Colors.blue),
+                ),
+                hintText: 'Masukan nama',
+                label: const Text('Nama Lengkap'),
+                prefixIcon: const Icon(Icons.person)),
+          ),
         ),
       ),
     );
